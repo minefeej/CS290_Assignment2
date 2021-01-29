@@ -101,7 +101,7 @@ class DynamicArray:
         """
         # Checking if passed capacity is positive and greater than the size of the dynamic array. Then creates a new
         # Static array using the new capacity and copies the old data to the new array.
-        if new_capacity > 0 and new_capacity > self.size:
+        if new_capacity > 0 and new_capacity >= self.size:
             new_arr = StaticArray(new_capacity)
             for index in range(self.size):
                 new_arr[index] = self.data[index]
@@ -166,15 +166,15 @@ class DynamicArray:
 # BASIC TESTING
 if __name__ == "__main__":
 
-    # print("\n# resize - example 1")
-    # da = DynamicArray()
-    # print(da.size, da.capacity, da.data)
-    # da.resize(8)
-    # print(da.size, da.capacity, da.data)
-    # da.resize(2)
-    # print(da.size, da.capacity, da.data)
-    # da.resize(0)
-    # print(da.size, da.capacity, da.data)
+    print("\n# resize - example 1")
+    da = DynamicArray()
+    print(da.size, da.capacity, da.data)
+    da.resize(8)
+    print(da.size, da.capacity, da.data)
+    da.resize(2)
+    print(da.size, da.capacity, da.data)
+    da.resize(0)
+    print(da.size, da.capacity, da.data)
 
 
     print("\n# resize - example 2")
@@ -184,29 +184,37 @@ if __name__ == "__main__":
     print(da)
     da.resize(4)
     print(da)
-    #
-    #
-    # print("\n# append - example 1")
-    # da = DynamicArray()
-    # print(da.size, da.capacity, da.data)
-    # da.append(1)
-    # print(da.size, da.capacity, da.data)
-    # print(da)
-    #
-    #
-    # print("\n# append - example 2")
-    # da = DynamicArray()
-    # for i in range(9):
-    #     da.append(i + 101)
-    #     print(da)
-    #
-    #
-    # print("\n# append - example 3")
-    # da = DynamicArray()
-    # for i in range(600):
-    #     da.append(i)
-    # print(da.size)
-    # print(da.capacity)
+
+    print("\n# resize - example 3")
+    da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
+    print(da)
+    da.resize(948)
+    print(da)
+    da.resize(8)
+    print(da)
+
+
+    print("\n# append - example 1")
+    da = DynamicArray()
+    print(da.size, da.capacity, da.data)
+    da.append(1)
+    print(da.size, da.capacity, da.data)
+    print(da)
+
+
+    print("\n# append - example 2")
+    da = DynamicArray()
+    for i in range(9):
+        da.append(i + 101)
+        print(da)
+
+
+    print("\n# append - example 3")
+    da = DynamicArray()
+    for i in range(600):
+        da.append(i)
+    print(da.size)
+    print(da.capacity)
 
 
     # print("\n# insert_at_index - example 1")
