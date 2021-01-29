@@ -107,8 +107,6 @@ class DynamicArray:
                 new_arr[index] = self.data[index]
             self.data = new_arr
             self.capacity = new_capacity
-        else:
-            return
 
     def append(self, value: object) -> None:
         """
@@ -179,36 +177,36 @@ if __name__ == "__main__":
     # print(da.size, da.capacity, da.data)
 
 
-    # print("\n# resize - example 2")
-    # da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
-    # print(da)
-    # da.resize(20)
-    # print(da)
-    # da.resize(4)
-    # print(da)
-    #
-    #
-    print("\n# append - example 1")
-    da = DynamicArray()
-    print(da.size, da.capacity, da.data)
-    da.append(1)
-    print(da.size, da.capacity, da.data)
+    print("\n# resize - example 2")
+    da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
     print(da)
-
-
-    print("\n# append - example 2")
-    da = DynamicArray()
-    for i in range(9):
-        da.append(i + 101)
-        print(da)
-
-
-    print("\n# append - example 3")
-    da = DynamicArray()
-    for i in range(600):
-        da.append(i)
-    print(da.size)
-    print(da.capacity)
+    da.resize(20)
+    print(da)
+    da.resize(4)
+    print(da)
+    #
+    #
+    # print("\n# append - example 1")
+    # da = DynamicArray()
+    # print(da.size, da.capacity, da.data)
+    # da.append(1)
+    # print(da.size, da.capacity, da.data)
+    # print(da)
+    #
+    #
+    # print("\n# append - example 2")
+    # da = DynamicArray()
+    # for i in range(9):
+    #     da.append(i + 101)
+    #     print(da)
+    #
+    #
+    # print("\n# append - example 3")
+    # da = DynamicArray()
+    # for i in range(600):
+    #     da.append(i)
+    # print(da.size)
+    # print(da.capacity)
 
 
     # print("\n# insert_at_index - example 1")
