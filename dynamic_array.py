@@ -170,22 +170,24 @@ class DynamicArray:
 
     def slice(self, start_index: int, size: int) -> object:
         """
-        TODO: Write this implementation
+        Returns a new Dynamic Array object that contains the requested number of elements from the original array
+        starting with the element located at the requested start index.
         """
         # Checks if the index is out of bound and raises exception.
         if start_index < 0 or start_index + size > self.size or size < 0:
             raise DynamicArrayException('Index out of bounds or size is too great')
-
+        # Creates a new array
         new_arr = DynamicArray()
         new_arr.size = 0
         count = 0
+        # Loops through original array and sets values into the new array.
         for index in range(start_index, start_index + size):
             new_arr.size += 1
             if new_arr.size == new_arr.capacity:
                 new_arr.resize(2 * new_arr.capacity)
             new_arr[count] = self.data[index]
             count += 1
-
+        # Returns new array.
         return new_arr
 
     def merge(self, second_da: object) -> None:
