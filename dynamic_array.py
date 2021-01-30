@@ -112,6 +112,7 @@ class DynamicArray:
         """
         Appends a value to the end of the dynamic array.
         """
+        # When the size is equal to the capacity, the capacity is increased and then the values are appended.
         if self.size == self.capacity:
             self.resize(2 * self.capacity)
         self.data[self.size] = value
@@ -119,15 +120,53 @@ class DynamicArray:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a passed value at a specified index and moves the existing elements to fit the inserted value.
         """
-        pass
+        # Checks if the index is out of bound and raises exception.
+        if index < 0 or index > self.size:
+            raise DynamicArrayException('Index out of bounds')
+        # Checks if the capacity needs to be increased and calls resize if it does.
+        if self.size == self.capacity:
+            self.resize(2 * self.capacity)
+        # Moves values in array to make room for new value at the passed index.
+        for ind in range(self.size - 1, index - 1, -1):
+            self.data[ind + 1] = self.data[ind]
+        # Populates new value in the array at the specified index and increments size.
+        self.data[index] = value
+        self.size += 1
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes element from array at passed index and resizes if needed.
         """
-        pass
+        # Checks if the index is out of bound and raises exception.
+        if index < 0 or index > self.size:
+            raise DynamicArrayException('Index out of bounds')
+        # Checks if array is empty and raises an exception.
+        if self.size == 0:
+            raise DynamicArrayException('Array is empty')
+        # Checks if capacity needs to be reduced. If size is 1/4 of capacity it reduces the capacity.
+        if self.size < (self.capacity / 4):
+            # If capacity is greater than 10 but double the size is less than 10, a new array is created of capacity 10.
+            if self.capacity > 10:
+                if (self.size * 2) < 10:
+                    new_arr = StaticArray(10)
+                    for ind in range(self.size):
+                        new_arr[ind] = self.data[ind]
+                    self.data = new_arr
+                    self.capacity = 10
+                # Else a new array is created twice the size of the array.
+                else:
+                    new_arr = StaticArray(self.size * 2)
+                    for ind in range(self.size):
+                        new_arr[ind] = self.data[ind]
+                    self.data = new_arr
+                    self.capacity = self.size * 2
+        # Removing the element at the index and filling in the gaps.
+        for ind in range(index, self.size - 1):
+            self.data[ind] = self.data[ind + 1]
+        # Reduces size by one.
+        self.size -= 1
 
     def slice(self, start_index: int, size: int) -> object:
         """
@@ -166,57 +205,58 @@ class DynamicArray:
 # BASIC TESTING
 if __name__ == "__main__":
 
-    print("\n# resize - example 1")
-    da = DynamicArray()
-    print(da.size, da.capacity, da.data)
-    da.resize(8)
-    print(da.size, da.capacity, da.data)
-    da.resize(2)
-    print(da.size, da.capacity, da.data)
-    da.resize(0)
-    print(da.size, da.capacity, da.data)
 
-
-    print("\n# resize - example 2")
-    da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
-    print(da)
-    da.resize(20)
-    print(da)
-    da.resize(4)
-    print(da)
-
-    print("\n# resize - example 3")
-    da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
-    print(da)
-    da.resize(948)
-    print(da)
-    da.resize(8)
-    print(da)
-
-
-    print("\n# append - example 1")
-    da = DynamicArray()
-    print(da.size, da.capacity, da.data)
-    da.append(1)
-    print(da.size, da.capacity, da.data)
-    print(da)
-
-
-    print("\n# append - example 2")
-    da = DynamicArray()
-    for i in range(9):
-        da.append(i + 101)
-        print(da)
-
-
-    print("\n# append - example 3")
-    da = DynamicArray()
-    for i in range(600):
-        da.append(i)
-    print(da.size)
-    print(da.capacity)
-
-
+    # print("\n# resize - example 1")
+    # da = DynamicArray()
+    # print(da.size, da.capacity, da.data)
+    # da.resize(8)
+    # print(da.size, da.capacity, da.data)
+    # da.resize(2)
+    # print(da.size, da.capacity, da.data)
+    # da.resize(0)
+    # print(da.size, da.capacity, da.data)
+    #
+    #
+    # print("\n# resize - example 2")
+    # da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
+    # print(da)
+    # da.resize(20)
+    # print(da)
+    # da.resize(4)
+    # print(da)
+    #
+    # print("\n# resize - example 3")
+    # da = DynamicArray([1, 2, 3, 4, 5, 6, 7, 8])
+    # print(da)
+    # da.resize(948)
+    # print(da)
+    # da.resize(8)
+    # print(da)
+    #
+    #
+    # print("\n# append - example 1")
+    # da = DynamicArray()
+    # print(da.size, da.capacity, da.data)
+    # da.append(1)
+    # print(da.size, da.capacity, da.data)
+    # print(da)
+    #
+    #
+    # print("\n# append - example 2")
+    # da = DynamicArray()
+    # for i in range(9):
+    #     da.append(i + 101)
+    #     print(da)
+    #
+    #
+    # print("\n# append - example 3")
+    # da = DynamicArray()
+    # for i in range(600):
+    #     da.append(i)
+    # print(da.size)
+    # print(da.capacity)
+    #
+    #
     # print("\n# insert_at_index - example 1")
     # da = DynamicArray([100])
     # print(da)
