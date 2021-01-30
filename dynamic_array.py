@@ -192,9 +192,12 @@ class DynamicArray:
 
     def merge(self, second_da: object) -> None:
         """
-        TODO: Write this implementation
+        Appends all elements from another array in the same order as they are stored in the second array.
         """
-        pass
+        # Loops through elements in second_da and appends to the original array object.
+        for index in range(second_da.size):
+            self.append(second_da[index])
+
 
     def map(self, map_func) -> object:
         """
@@ -380,19 +383,19 @@ if __name__ == "__main__":
     # print(da, da_slice, sep="\n")
     #
     #
-    print("\n# slice example 2")
-    da = DynamicArray([10, 11, 12, 13, 14, 15, 16])
-    print("SOURCE:", da)
-    da_slice = da.slice(0, 5)
-    print(da_slice)
-    print(da_slice.data)
-    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1), (6, -1)]
-    for i, cnt in slices:
-        print("Slice", i, "/", cnt, end="")
-        try:
-            print(" --- OK: ", da.slice(i, cnt))
-        except:
-            print(" --- exception occurred.")
+    # print("\n# slice example 2")
+    # da = DynamicArray([10, 11, 12, 13, 14, 15, 16])
+    # print("SOURCE:", da)
+    # da_slice = da.slice(0, 5)
+    # print(da_slice)
+    # print(da_slice.data)
+    # slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1), (6, -1)]
+    # for i, cnt in slices:
+    #     print("Slice", i, "/", cnt, end="")
+    #     try:
+    #         print(" --- OK: ", da.slice(i, cnt))
+    #     except:
+    #         print(" --- exception occurred.")
     #
     #
     # print("\n# merge example 1")
