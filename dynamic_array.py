@@ -187,6 +187,9 @@ class DynamicArray:
                 new_arr.resize(2 * new_arr.capacity)
             new_arr[count] = self.data[index]
             count += 1
+        if new_arr.size % 4 == 0:
+             new_arr.capacity = (self.size // 4) * 4
+
         # Returns new array.
         return new_arr
 
@@ -215,6 +218,9 @@ class DynamicArray:
                 new_arr.resize(2 * new_arr.capacity)
             new_arr[count] = map_func(self.data[index])
             count += 1
+        if new_arr.size % 4 == 0:
+            new_arr.capacity = (self.size // 4) * 4
+
         # Returns new array.
         return new_arr
 
@@ -411,6 +417,13 @@ if __name__ == "__main__":
         except:
             print(" --- exception occurred.")
 
+    print("\n# slice example 3")
+    da = DynamicArray([0, 1, 2, 3, 4, 5, 6, 7, 8])
+    da_slice = da.slice(1, 8)
+    print(da, da_slice, sep="\n")
+    da_slice.remove_at_index(0)
+    print(da, da_slice, sep="\n")
+
 
     print("\n# merge example 1")
     da = DynamicArray([1, 2, 3, 4, 5])
@@ -436,7 +449,7 @@ if __name__ == "__main__":
     da = DynamicArray([1, 5, 10, 15, 20, 25])
     print(da)
     print(da.map(lambda x: x ** 2))
-    #
+
     print("\n# map example 2")
 
 
