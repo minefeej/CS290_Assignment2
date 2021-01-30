@@ -188,7 +188,10 @@ class DynamicArray:
             new_arr[count] = self.data[index]
             count += 1
         if new_arr.size % 4 == 0:
-             new_arr.capacity = (self.size // 4) * 4
+            if new_arr.size == 0:
+                new_arr.capacity = 4
+            else:
+                new_arr.capacity = (self.size // 4) * 4
 
         # Returns new array.
         return new_arr
@@ -219,7 +222,10 @@ class DynamicArray:
             new_arr[count] = map_func(self.data[index])
             count += 1
         if new_arr.size % 4 == 0:
-            new_arr.capacity = (self.size // 4) * 4
+            if new_arr.size == 0:
+                new_arr.capacity = 4
+            else:
+                new_arr.capacity = (self.size // 4) * 4
 
         # Returns new array.
         return new_arr
