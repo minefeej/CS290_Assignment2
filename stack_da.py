@@ -66,7 +66,7 @@ class Stack:
         # Stores top element in a variable.
         top_el = self.da[size - 1]
 
-        # Remove top variable from stack.
+        # Remove top element from stack.
         self.da.remove_at_index(size - 1)
 
         # Returns value of removed element

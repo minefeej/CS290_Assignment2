@@ -1,8 +1,8 @@
 # Course: CS261 - Data Structures
-# Student Name:
-# Assignment:
-# Description:
-# Last revised:
+# Student Name: Joseph Minefee
+# Assignment: Assignment 2
+# Description: Implement a Queue ADT
+# Last revised: 1/31/21
 
 from dynamic_array import *
 
@@ -50,15 +50,27 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new value to the end of the queue
         """
-        pass
+        self.da.append(value)
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Removes and returns the value from the beginning of the queue.
         """
-        pass
+        size = self.size()
+        # If queue is empty, raises an exception.
+        if size == 0:
+            raise QueueException("Queue is Empty")
+
+        # Stores beginning element in a variable.
+        begin_el = self.da[0]
+
+        # Remove beginning element from queue.
+        self.da.remove_at_index(0)
+
+        # Returns value of removed element
+        return begin_el
 
 
 

@@ -2,7 +2,7 @@
 # Student Name: Joseph Minefee
 # Assignment: Assignment 2: Implementation of Dynamic Array and ADTs using Dynamic Array and Amortized Analysis
 # Description:  Implement a Dynamic Array, a Bag ADT, a Stack ADT, and a Queue ADT.
-# Last revised: 1/29/21
+# Last revised: 1/31/21
 
 
 from static_array import *
