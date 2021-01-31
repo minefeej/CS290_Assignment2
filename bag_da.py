@@ -86,12 +86,11 @@ class Bag:
         Compares the content of the bag with the content of a second bag and returns True if the bags are equal. Else,
         it returns False.
         """
-        # Initialize bag sizes, two empty bags for cloning original bags, and result to False.
+        # Initialize bag sizes and two empty bags for cloning original bags.
         bag_1_size = self.size()
         bag_2_size = second_bag.size()
         clone_1 = Bag()
         clone_2 = Bag()
-        result = False
 
         # Clone bags to clone_1 and clone_2.
         for ind in range(bag_1_size):
@@ -105,19 +104,18 @@ class Bag:
 
         # Check if bags are empty.
         if bag_1_size == 0 and bag_2_size == 0:
-            result = True
+            return True
 
         if bag_1_size == bag_2_size and bag_1_size != 0 and bag_2_size != 0:
             # Loop through the cloned bags and compare the elements.
             for ind in range(bag_1_size):
-                if clone_1.da[ind] == clone_2.da[ind]:
-                    result = True
-                else:
-                    result = False
+                # If an element in the bags don't match, False is returned. Otherwise, True is returned.
+                if clone_1.da[ind] != clone_2.da[ind]:
+                    return False
+            return True
 
         # Returns the result.
-        return result
-
+        return False
 
 # BASIC TESTING
 if __name__ == "__main__":
@@ -174,4 +172,9 @@ if __name__ == "__main__":
 
     bag1 = Bag([100, 200, 300, 200])
     bag2 = Bag([100, 200, 30, 100])
+    print(bag1.equal(bag2))
+
+    print("\n# equal example 2")
+    bag1 = Bag([1, 2, 2])
+    bag2 = Bag([1, 1, 2])
     print(bag1.equal(bag2))
