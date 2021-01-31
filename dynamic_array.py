@@ -204,9 +204,9 @@ class DynamicArray:
         # Resizes the capacity of the array.
         if new_arr.size % 4 == 0:
             if new_arr.size == 0:
-                new_arr.capacity = 4
+                new_arr.resize(4)
             else:
-                new_arr.capacity = (self.size // 4) * 4
+                new_arr.resize((new_arr.size // 4) * 4)
 
         # Returns new array.
         return new_arr
@@ -218,7 +218,6 @@ class DynamicArray:
         # Loops through elements in second_da and appends to the original array object.
         for index in range(second_da.size):
             self.append(second_da[index])
-
 
     def map(self, map_func) -> object:
         """
@@ -239,12 +238,12 @@ class DynamicArray:
         # Resizes the capacity of the array.
         if new_arr.size % 4 == 0:
             if new_arr.size == 0:
-                new_arr.capacity = 4
+                new_arr.resize(4)
             else:
-                new_arr.capacity = (self.size // 4) * 4
+                new_arr.resize((new_arr.size // 4) * 4)
+
         # Returns new array.
         return new_arr
-
 
     def filter(self, filter_func) -> object:
         """
@@ -267,9 +266,10 @@ class DynamicArray:
         # Resizes the capacity of the array.
         if new_arr.size % 4 == 0:
             if new_arr.size == 0:
-                new_arr.capacity = 4
+                new_arr.resize(4)
             else:
-                new_arr.capacity = (self.size // 4) * 4
+                new_arr.resize((new_arr.size // 4) * 4)
+
         # Returns new array.
         return new_arr
 
@@ -302,6 +302,7 @@ class DynamicArray:
             # If it is not the first loop, the result is passed as the x value.
             else:
                 result = reduce_func(result, self.data[ind])
+
         # Result value is returned.
         return result
 
@@ -495,6 +496,11 @@ if __name__ == "__main__":
         da_slice = da.slice(1, 0)
     except:
         print(" --- exception occurred.")
+
+    print("\n# slice example 5")
+    da = DynamicArray([75467, 41515, 24345, -56853, 49539, 3588, -28640, 63465])
+    da_slice = da.slice(3, 4)
+    print(da, da_slice, sep="\n")
 
     print("\n# merge example 1")
     da = DynamicArray([1, 2, 3, 4, 5])
