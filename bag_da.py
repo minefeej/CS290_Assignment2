@@ -83,7 +83,8 @@ class Bag:
 
     def equal(self, second_bag: object) -> bool:
         """
-        TODO: Write this implementation
+        Compares the content of the bag with the content of a second bag and returns True if the bags are equal. Else,
+        it returns False.
         """
         # Initialize bag sizes, two empty bags for cloning original bags, and result to False.
         bag_1_size = self.size()
@@ -114,15 +115,8 @@ class Bag:
                 else:
                     result = False
 
-
-        # After all items are compared, check if the bags are both empty.
-        #     clone_1_size = clone_1.size()
-        #     clone_2_size = clone_2.size()
-        #     if clone_1_size == 0 and clone_2_size == 0:
-        #         return True
+        # Returns the result.
         return result
-        # return clone_1.__str__(), clone_2.__str__()
-
 
 
 # BASIC TESTING
