@@ -93,6 +93,20 @@ class DynamicArray:
         """
         return self.size
 
+    def sort(self) -> None:
+        """
+        Receives an DynamicArray object and sorts the array in non-descending order.
+        """
+        size = self.size
+
+        for ind in range(1, size):
+            val = self.data[ind]
+            pos = ind - 1
+            while pos >= 0 and self.data[pos] > val:
+                self.data[pos + 1] = self.data[pos]
+                pos -= 1
+            self.data[pos + 1] = val
+
     # ------------------------------------------------------------------ #
 
     def resize(self, new_capacity: int) -> None:
